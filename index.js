@@ -1,4 +1,3 @@
-let key, val;
 exports.EncodeStream    = require('./src/EncodeStream');
 exports.DecodeStream    = require('./src/DecodeStream');
 exports.Array           = require('./src/Array');
@@ -13,14 +12,8 @@ exports.String          = require('./src/String');
 exports.Struct          = require('./src/Struct');
 exports.VersionedStruct = require('./src/VersionedStruct');
 
-const object = require('./src/Number');
-for (key in object) {
-  val = object[key];
-  exports[key] = val;
-}
+const utils             = require('./src/utils');
+const NumberT           = require('./src/Number');
+const Pointer           = require('./src/Pointer');
 
-const object1 = require('./src/Pointer');
-for (key in object1) {
-  val = object1[key];
-  exports[key] = val;
-}
+Object.assign(exports, utils, NumberT, Pointer);
